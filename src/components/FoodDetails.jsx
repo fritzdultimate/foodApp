@@ -20,10 +20,10 @@ export default function FoodDetails({ foodId }) {
 
   return (
     <div>
-      <div className={styles.recipe - card}>
-        <h1 className={styles.recipe - name}>{food.title}</h1>
-        <img className={styles.recipe - image} src={food.image} alt="" />
-        <div className={styles.recipe - details}>
+      <div className={styles.recipeCard}>
+        <h1 className={styles.recipeName}>{food.title}</h1>
+        <img className={styles.recipeImage} src={food.image} alt="" />
+        <div className={styles.recipeDetails}>
           <span>
             <strong>⌚ {food.readyInMinutes} Minutes</strong>
           </span>
@@ -49,16 +49,16 @@ export default function FoodDetails({ foodId }) {
         </div>
 
         <h2>Ingredients</h2>
-        <ItemList food={food} isLoading={isLoading}/>
+        <ItemList food={food} isLoading={isLoading} />
 
         <h2>Instructions</h2>
-        <div className={styles.recipe - instructions}>
+        <div className={styles.recipeInstructions}>
           <ol className>
             {isLoading ? (
               <p>Loading...</p>
             ) : (
               food.analyzedInstructions[0].steps.map((step) => (
-                <li>{step.step}</li>
+                <li key={step.step}>{step.step}</li>
               ))
             )}
           </ol>
